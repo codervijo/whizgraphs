@@ -1,0 +1,11 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Dashboard from "../components/pages/Dashboard.tsx";
+---
+<Layout
+  title="Dashboard — WhizGraphs"
+  description="Create SEO infographics from GSC-style data. Pick a template, edit branding, preview live."
+  path="/dashboard"
+>
+  <Dashboard client:load />
+</Layout>

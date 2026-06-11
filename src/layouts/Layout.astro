@@ -1,16 +1,16 @@
 ---
-// src/pages/index.astro — WhizGraphs home. Standalone document (inlines the
-// SEO baseline tags so the technical-SEO regression test passes) reusing the
-// same chrome + global styles as Layout.astro.
+// src/layouts/Layout.astro — shared chrome + head for ported WhizGraphs pages.
 import "../styles/global.css";
 import Header from "../components/Header.tsx";
 import Footer from "../components/Footer.tsx";
-import Home from "../components/pages/Home.tsx";
 
 const site = "https://whizgraphs.com";
-const title = "WhizGraphs — Turn SEO data into shareable infographics";
-const description =
-  "WhizGraphs converts Search Console data into clean visual SEO reports for founders, consultants, and agencies.";
+const {
+  title = "WhizGraphs",
+  description = "WhizGraphs converts Search Console data into clean visual SEO reports.",
+  path = "/",
+} = Astro.props;
+const canonical = new URL(path, site).href;
 ---
 <!doctype html>
 <html lang="en">
@@ -19,14 +19,14 @@ const description =
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={site} />
+    <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="WhizGraphs — SEO infographics from your GSC data" />
-    <meta property="og:description" content="Generate polished SEO infographics in seconds from Google Search Console-style data." />
-    <meta property="og:url" content={site} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content="WhizGraphs" />
 
     <!-- Twitter card -->
@@ -47,34 +47,12 @@ const description =
         } catch (e) {}
       })();
     </script>
-
-    <!-- JSON-LD structured data: Organization + WebSite -->
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://whizgraphs.com/#organization",
-      "name": "WhizGraphs",
-      "url": "https://whizgraphs.com/"
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://whizgraphs.com/#website",
-      "url": "https://whizgraphs.com/",
-      "name": "WhizGraphs",
-      "publisher": { "@id": "https://whizgraphs.com/#organization" }
-    }
-  ]
-}
-    </script>
   </head>
   <body>
     <div class="flex min-h-screen flex-col bg-background">
       <Header client:load />
       <main class="flex-1">
-        <Home />
+        <slot />
       </main>
       <Footer />
     </div>

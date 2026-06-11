@@ -1,0 +1,38 @@
+import { InfographicPreview, defaultConfig, type InfographicConfig } from "../InfographicPreview";
+import { ArrowRight } from "lucide-react";
+
+const examples: Array<Partial<InfographicConfig> & { template: InfographicConfig["template"]; brandColor: string; siteName: string; headline: string }> = [
+  { template: "traffic-growth", siteName: "northbeam.dev", brandColor: "#0891b2", headline: "Search traffic 3.4× in 8 months.", logo: "NB" },
+  { template: "top-pages", siteName: "tailtools.io", brandColor: "#16a34a", headline: "5 URLs drove 62% of clicks.", logo: "TT" },
+  { template: "keyword-wins", siteName: "fenwick.studio", brandColor: "#dc2626", headline: "Big movers — August 2026.", logo: "FW" },
+  { template: "content-performance", siteName: "lattice.blog", brandColor: "#7c3aed", headline: "Which posts pay rent?", logo: "LB" },
+  { template: "seo-health", siteName: "harborlabs.com", brandColor: "#0f172a", headline: "Quarterly SEO snapshot.", logo: "HL" },
+  { template: "traffic-growth", siteName: "orbitcrm.com", brandColor: "#ea580c", headline: "Q3 hit a new high.", logo: "OR" },
+];
+
+export default function SeoInfographicExamples() {
+  return (
+    <section className="container-page py-12">
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <div className="max-w-2xl">
+          <h1 className="text-4xl font-bold tracking-tight md:text-5xl">SEO infographic examples</h1>
+          <p className="mt-3 text-muted-foreground">
+            Six real-feel examples generated from mock GSC data. Different brands, different stories — same template
+            engine.
+          </p>
+        </div>
+        <a
+          href="/dashboard"
+          className="inline-flex h-10 items-center gap-2 rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+        >
+          Build your own <ArrowRight className="h-4 w-4" />
+        </a>
+      </div>
+      <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {examples.map((e, i) => (
+          <InfographicPreview key={i} config={{ ...defaultConfig, ...e }} />
+        ))}
+      </div>
+    </section>
+  );
+}
