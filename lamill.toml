@@ -1,0 +1,58 @@
+# lamill.toml — per-site config consumed by lamill (portfolio/ops) and rankmill (content/audits).
+# [content] = stable identity, authored by hand. [todo] = volatile work state.
+# rankmill output lives in sites/<domain>/rankmill-output/, not here.
+
+schema = "lamill-toml-v1"
+
+[deploy]
+platform = "cf-pages"
+production_branch = "main"
+custom_domains = [
+    "whizgraphs.com",
+]
+
+[index]
+indexnow_key = "54f576a9557302d6c0d8185a6a8b04f5"
+indexnow_enabled = true
+
+[stack]
+framework = "astro"
+
+# Tracked todos for whizgraphs.com. status: "done" | "open".
+[[todo]]
+status = "open"
+priority = "high"
+task = "Fill in [content] block: tone"
+
+[[todo]]
+status = "open"
+priority = "medium"
+task = "Check SEO: GSC indexation + coverage (revisit ~2026-06-24)"
+
+[[todo]]
+status = "open"
+priority = "medium"
+task = "Verify GA4 is receiving data (check Realtime after first traffic)"
+
+[[todo]]
+status = "open"
+priority = "low"
+task = "Confirm GSC verification + sitemap submitted (re-run deploy if it timed out)"
+
+[content]
+# Declarative content identity for this site.
+# Authored by the human; consumed by rankmill to generate drafts and run audits.
+# Leave fields empty until you have a deliberate answer. Empty is better than wrong.
+site_type = "tool"
+primary_keyword = "seo infographics"
+secondary_keywords = [
+    "seo report infographic",
+    "gsc infographic report",
+    "traffic growth infographic",
+    "seo infographic examples",
+]
+icp = "The ideal customer manages one or more content-driven websites, already checks Google Search Console regularly, and needs to explain SEO progress to clients, partners, teams, or themselves without building manual reports every month."
+urgency_trigger = "Upcoming client reports or monthly performance reviews that require clear, shareable SEO visuals"
+penalty = "Continued time-consuming manual reporting, unclear client communications, and inability to clearly demonstrate SEO progress"
+tone = ""                 # e.g. "direct, technical, no fluff" or "warm, plainspoken"
+law = ""                  # statute or regulation if applicable, else empty
