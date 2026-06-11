@@ -20,8 +20,7 @@ framework = "astro"
 
 # Tracked todos for whizgraphs.com. status: "done" | "open".
 [[todo]]
-status = "open"
-priority = "high"
+status = "done"
 task = "Fill in [content] block: tone"
 
 [[todo]]
@@ -54,5 +53,5 @@ secondary_keywords = [
 icp = "The ideal customer manages one or more content-driven websites, already checks Google Search Console regularly, and needs to explain SEO progress to clients, partners, teams, or themselves without building manual reports every month."
 urgency_trigger = "Upcoming client reports or monthly performance reviews that require clear, shareable SEO visuals"
 penalty = "Continued time-consuming manual reporting, unclear client communications, and inability to clearly demonstrate SEO progress"
-tone = ""                 # e.g. "direct, technical, no fluff" or "warm, plainspoken"
+tone = "direct, technical, no fluff"
 law = ""                  # statute or regulation if applicable, else empty
