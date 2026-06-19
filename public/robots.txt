@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://whizgraphs.com/sitemap.xml
+Sitemap: https://whizgraphs.com/sitemap-index.xml
