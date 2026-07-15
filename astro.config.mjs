@@ -6,6 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://whizgraphs.com',
+  trailingSlash: 'always',
   integrations: [sitemap(), react()],
   output: 'static',
   vite: {

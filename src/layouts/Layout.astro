@@ -10,7 +10,10 @@ const {
   description = "WhizGraphs converts Search Console data into clean visual SEO reports.",
   path = "/",
 } = Astro.props;
-const canonical = new URL(path, site).href;
+// Standardize on the with-slash form: it is what the static build serves (200)
+// and what the sitemap emits. A no-slash canonical would point at a 308 redirect.
+const normalizedPath = path.endsWith("/") ? path : `${path}/`;
+const canonical = new URL(normalizedPath, site).href;
 ---
 <!doctype html>
 <html lang="en">

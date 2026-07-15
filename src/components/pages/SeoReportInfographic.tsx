@@ -14,7 +14,7 @@ export default function SeoReportInfographic() {
           snapshot of the month — wins, trends, and gaps — without the busywork.
         </p>
         <a
-          href="/dashboard"
+          href="/dashboard/"
           className="mt-6 inline-flex h-11 items-center gap-2 rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground hover:bg-primary/90"
         >
           Generate a monthly report <ArrowRight className="h-4 w-4" />

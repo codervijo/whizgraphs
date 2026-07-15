@@ -23,13 +23,13 @@ export default function Home() {
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
-                href="/dashboard"
+                href="/dashboard/"
                 className="inline-flex h-11 items-center gap-2 rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
               >
                 Create your first SEO infographic <ArrowRight className="h-4 w-4" />
               </a>
               <a
-                href="/seo-infographic-examples"
+                href="/seo-infographic-examples/"
                 className="inline-flex h-11 items-center gap-2 rounded-md border border-border bg-background px-5 text-sm font-medium hover:bg-muted"
               >
                 See examples
@@ -125,7 +125,7 @@ client seo dashboard,221,4400,5.0%,9
               <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Example infographics</h2>
               <p className="mt-2 text-muted-foreground">All generated from mock GSC data. Yours can look like this.</p>
             </div>
-            <a href="/seo-infographic-examples" className="hidden text-sm font-medium text-primary md:inline-flex">
+            <a href="/seo-infographic-examples/" className="hidden text-sm font-medium text-primary md:inline-flex">
               View all →
             </a>
           </div>
@@ -174,7 +174,7 @@ client seo dashboard,221,4400,5.0%,9
         <div className="container-page py-16 text-center">
           <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Your GSC data deserves better than a CSV.</h2>
           <a
-            href="/dashboard"
+            href="/dashboard/"
             className="mt-6 inline-flex h-11 items-center gap-2 rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground hover:bg-primary/90"
           >
             Create your first SEO infographic <ArrowRight className="h-4 w-4" />
@@ -216,7 +216,7 @@ function PricingBlock() {
               ))}
             </ul>
             <a
-              href="/dashboard"
+              href="/dashboard/"
               className={`mt-5 inline-flex h-10 w-full items-center justify-center rounded-md text-sm font-medium ${p.featured ? "bg-primary text-primary-foreground hover:bg-primary/90" : "border border-border hover:bg-muted"}`}
             >
               {p.cta}

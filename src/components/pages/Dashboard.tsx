@@ -117,7 +117,7 @@ function DashSidebar({
         <div className="flex items-center gap-1.5 font-medium text-foreground">
           <Sparkles className="h-3.5 w-3.5 text-primary" /> Connected data
         </div>
-        <p className="mt-1">Using mock GSC data. <a href="/pricing" className="text-primary">Upgrade</a> for live sync.</p>
+        <p className="mt-1">Using mock GSC data. <a href="/pricing/" className="text-primary">Upgrade</a> for live sync.</p>
       </div>
     </aside>
   );
@@ -331,7 +331,7 @@ function BrandView({
         </Field>
       </div>
       <p className="mt-4 text-xs text-muted-foreground">
-        Multi-brand kits for client work land on the <a href="/pricing" className="text-primary">Agency plan</a>.
+        Multi-brand kits for client work land on the <a href="/pricing/" className="text-primary">Agency plan</a>.
       </p>
     </Card>
   );

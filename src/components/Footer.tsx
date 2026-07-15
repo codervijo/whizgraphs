@@ -12,10 +12,10 @@ export function Footer() {
           <span>© {new Date().getFullYear()}</span>
         </div>
         <div className="flex flex-wrap gap-4">
-          <a href="/seo-infographics" className="hover:text-foreground">SEO Infographics</a>
-          <a href="/seo-infographic-examples" className="hover:text-foreground">Examples</a>
-          <a href="/pricing" className="hover:text-foreground">Pricing</a>
-          <a href="/dashboard" className="hover:text-foreground">App</a>
+          <a href="/seo-infographics/" className="hover:text-foreground">SEO Infographics</a>
+          <a href="/seo-infographic-examples/" className="hover:text-foreground">Examples</a>
+          <a href="/pricing/" className="hover:text-foreground">Pricing</a>
+          <a href="/dashboard/" className="hover:text-foreground">App</a>
         </div>
       </div>
     </footer>

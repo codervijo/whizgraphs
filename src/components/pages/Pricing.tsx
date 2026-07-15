@@ -34,7 +34,7 @@ export default function Pricing() {
               ))}
             </ul>
             <a
-              href="/dashboard"
+              href="/dashboard/"
               className={`mt-6 inline-flex h-10 items-center justify-center rounded-md text-sm font-medium ${p.featured ? "bg-primary text-primary-foreground hover:bg-primary/90" : "border border-border hover:bg-muted"}`}
             >
               {p.cta}

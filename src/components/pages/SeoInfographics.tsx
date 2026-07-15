@@ -24,7 +24,7 @@ export default function SeoInfographics() {
                 <p className="mt-1 text-sm text-muted-foreground">{t.description}</p>
               </div>
               <a
-                href="/dashboard"
+                href="/dashboard/"
                 className="inline-flex h-9 items-center gap-1 rounded-md bg-primary px-3 text-xs font-medium text-primary-foreground hover:bg-primary/90"
               >
                 Use template <ArrowRight className="h-3.5 w-3.5" />

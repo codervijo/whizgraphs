@@ -1,0 +1,51 @@
+---
+// src/pages/404.astro — real 404 page. With wrangler.jsonc's
+// not_found_handling: "404-page", Cloudflare serves this at a 404 status for
+// any unknown path (replacing the old SPA fallback that returned 200 → soft-404).
+import "../styles/global.css";
+import Header from "../components/Header.tsx";
+import Footer from "../components/Footer.tsx";
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Page not found — WhizGraphs</title>
+    <meta name="robots" content="noindex, follow" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Prevent theme flash: apply persisted/system theme before paint -->
+    <script is:inline>
+      (function () {
+        try {
+          var theme = localStorage.getItem("whizgraphs-theme") || "system";
+          var resolved =
+            theme === "system"
+              ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+              : theme;
+          if (resolved === "dark") document.documentElement.classList.add("dark");
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col bg-background">
+      <Header client:load />
+      <main class="flex flex-1 flex-col items-center justify-center px-6 py-24 text-center">
+        <p class="text-sm font-medium text-primary">404</p>
+        <h1 class="mt-2 text-3xl font-bold text-foreground">Page not found</h1>
+        <p class="mt-3 max-w-md text-muted-foreground">
+          The page you're looking for doesn't exist or has moved.
+        </p>
+        <a
+          href="/"
+          class="mt-6 inline-flex items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90"
+        >
+          Back to home
+        </a>
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>
