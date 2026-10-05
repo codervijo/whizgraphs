@@ -1,11 +1,23 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import SeoReportInfographic from "../components/pages/SeoReportInfographic.tsx";
+import SeoReportInfographic, { faq } from "../components/pages/SeoReportInfographic.tsx";
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
 ---
 <Layout
   title="SEO Report Infographic — WhizGraphs"
-  description="Replace your monthly SEO PDF with a single shareable infographic. Visual, branded, and built from real search data."
+  description="Replace your monthly SEO PDF with a single shareable infographic. What belongs in the report, how it beats a PDF, and the anatomy of a one-page recap."
   path="/seo-report-infographic"
+  breadcrumb={[{ name: "Home", path: "/" }, { name: "SEO Report Infographic", path: "/seo-report-infographic/" }]}
 >
   <SeoReportInfographic />
+  <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
 </Layout>

@@ -9,11 +9,27 @@ const {
   title = "WhizGraphs",
   description = "WhizGraphs converts Search Console data into clean visual SEO reports.",
   path = "/",
+  breadcrumb = [],
 } = Astro.props;
 // Standardize on the with-slash form: it is what the static build serves (200)
 // and what the sitemap emits. A no-slash canonical would point at a 308 redirect.
 const normalizedPath = path.endsWith("/") ? path : `${path}/`;
 const canonical = new URL(normalizedPath, site).href;
+
+// Optional BreadcrumbList JSON-LD: pages pass a [{ name, path }] trail (Home → …).
+const breadcrumbLd =
+  breadcrumb.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: breadcrumb.map((b, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: b.name,
+          item: new URL(b.path.endsWith("/") ? b.path : `${b.path}/`, site).href,
+        })),
+      }
+    : null;
 ---
 <!doctype html>
 <html lang="en">
@@ -37,6 +53,10 @@ const canonical = new URL(normalizedPath, site).href;
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
 
+    {breadcrumbLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
+    )}
+
     <!-- Prevent theme flash: apply persisted/system theme before paint -->
     <script is:inline>
       (function () {
@@ -53,7 +73,7 @@ const canonical = new URL(normalizedPath, site).href;
   </head>
   <body>
     <div class="flex min-h-screen flex-col bg-background">
-      <Header client:load />
+      <Header client:idle />
       <main class="flex-1">
         <slot />
       </main>

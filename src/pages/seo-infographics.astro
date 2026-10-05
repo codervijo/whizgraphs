@@ -1,11 +1,23 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import SeoInfographics from "../components/pages/SeoInfographics.tsx";
+import SeoInfographics, { faq } from "../components/pages/SeoInfographics.tsx";
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
 ---
 <Layout
   title="SEO Infographics — WhizGraphs"
-  description="Five SEO infographic templates built from Google Search Console-style data. Pick one, brand it, share it."
+  description="Five SEO infographic templates built from Google Search Console-style data. See what each reads, the question it answers, and when to use it."
   path="/seo-infographics"
+  breadcrumb={[{ name: "Home", path: "/" }, { name: "SEO Infographics", path: "/seo-infographics/" }]}
 >
   <SeoInfographics />
+  <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
 </Layout>

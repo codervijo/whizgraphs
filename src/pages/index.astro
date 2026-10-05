@@ -68,6 +68,23 @@ const description =
       "url": "https://whizgraphs.com",
       "name": "WhizGraphs",
       "publisher": { "@id": "https://whizgraphs.com/#organization" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://whizgraphs.com/#app",
+      "name": "WhizGraphs",
+      "url": "https://whizgraphs.com",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "Generate polished SEO infographics from Google Search Console-style data — traffic growth, top pages, keyword wins, content performance, and SEO health.",
+      "publisher": { "@id": "https://whizgraphs.com/#organization" },
+      "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "USD",
+        "lowPrice": "0",
+        "highPrice": "39",
+        "offerCount": "3"
+      }
     }
   ]
 }
@@ -75,7 +92,7 @@ const description =
   </head>
   <body>
     <div class="flex min-h-screen flex-col bg-background">
-      <Header client:load />
+      <Header client:idle />
       <main class="flex-1">
         <Home />
       </main>

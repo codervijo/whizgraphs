@@ -1,11 +1,23 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import GscInfographicReport from "../components/pages/GscInfographicReport.tsx";
+import GscInfographicReport, { faq } from "../components/pages/GscInfographicReport.tsx";
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
 ---
 <Layout
   title="GSC Infographic Report — WhizGraphs"
-  description="Turn Google Search Console exports into a one-page infographic report. Clicks, impressions, CTR, and position — visualized."
+  description="Turn Google Search Console data into a one-page infographic. What clicks, impressions, CTR, and average position mean — and how to read the trends."
   path="/gsc-infographic-report"
+  breadcrumb={[{ name: "Home", path: "/" }, { name: "GSC Infographic Report", path: "/gsc-infographic-report/" }]}
 >
   <GscInfographicReport />
+  <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
 </Layout>

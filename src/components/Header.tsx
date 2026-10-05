@@ -4,11 +4,11 @@ import { useTheme } from "../hooks/useTheme";
 
 const nav = [
   { to: "/", label: "Home" },
-  { to: "/seo-infographics", label: "SEO Infographics" },
-  { to: "/seo-infographic-examples", label: "Examples" },
-  { to: "/gsc-infographic-report", label: "GSC Report" },
-  { to: "/seo-report-infographic", label: "SEO Report" },
-  { to: "/pricing", label: "Pricing" },
+  { to: "/seo-infographics/", label: "SEO Infographics" },
+  { to: "/seo-infographic-examples/", label: "Examples" },
+  { to: "/gsc-infographic-report/", label: "GSC Report" },
+  { to: "/seo-report-infographic/", label: "SEO Report" },
+  { to: "/pricing/", label: "Pricing" },
 ] as const;
 
 export function Header() {
