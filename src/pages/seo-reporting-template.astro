@@ -1,0 +1,19 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SeoReportingTemplate, { faq, PATH, HERO, PLAN, DOWNLOADS } from "../components/pages/SeoReportingTemplate.tsx";
+import { faqLd, templateLd } from "../lib/schema";
+
+const title = "SEO Reporting Template: Cadence, KPIs & Reporting Plan";
+const description =
+  "Free SEO reporting template: weekly, monthly and quarterly cadences, KPIs by audience, and a reporting plan to agree with clients. PDF and sheet.";
+---
+<Layout
+  title={title}
+  description={description}
+  path={PATH}
+  image={{ src: HERO.png, w: HERO.w, h: HERO.h, alt: HERO.alt }}
+  breadcrumb={[{ name: "Home", path: "/" }, { name: "SEO Report Template", path: "/seo-report-template/" }, { name: "SEO Reporting Template", path: PATH }]}
+  jsonLd={[templateLd({ path: PATH, name: "SEO reporting template", description, graphics: [HERO, PLAN], downloads: DOWNLOADS }), faqLd(faq)]}
+>
+  <SeoReportingTemplate />
+</Layout>

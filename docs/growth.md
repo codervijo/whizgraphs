@@ -64,3 +64,12 @@ https://search.google.com/search-console directly.
 - **Action:** project scaffolded via `portfolio new bootstrap`; first deploy pending. After deploy: verify in GSC as `sc-domain:whizgraphs.com` and submit the sitemap.
 - **Result:** TBD — review 2026-07-08
 - **Learning:** TBD
+
+## 2026-10-05 — v2 SEO template cluster: upgrade infographic pages, add four template pages
+- **Status:** active
+- **Hypothesis:** Low-KD template queries (seo report template 2.8K/KD0, seo reporting template 1K/KD12, monthly seo report template 600/KD5, seo dashboard template 100/KD4) plus the infographic pages GSC already shows impressions for (seo infographic 1.6K/KD5, seo infographics 1.5K/KD0) will index and earn clicks if each page carries a genuinely usable asset (downloadable PDF/CSV/PNG) and original crawlable graphics rather than prose. Consolidating `/seo-report-infographic/` into `/seo-report-template/` removes a crawled-not-indexed near-duplicate.
+- **KPI:** GSC impressions + clicks for the seven cluster URLs; indexed status of `/gsc-infographic-report/` and the four new template URLs; Google Images impressions for `/graphics/*`.
+- **Baseline:** GSC API, 2026-09-04 → 2026-10-02 (28d, pre-deploy): site 0 clicks / 2,472 impressions / avg pos 69.1. `/seo-infographics/` 0 clk / 2,383 imp / pos 71.4; `/seo-infographic-examples/` 0 / 1,352 / 80.7; other cluster URLs no impressions. Indexing (2026-10-05 snapshot): `/gsc-infographic-report/` + `/seo-report-infographic/` crawled_not_indexed. Top queries: seo infographic 1,342 imp (pos 65.8), seo infographics 472 (69.0), infographics for seo 284 (77.6), infographic seo 270 (74.5).
+- **Action:** v2.B–D (see `docs/prd.md`): 26 generated graphics (SVG on page, PNG for share/og), 4 two-page PDFs + 5 CSVs, ImageObject/CreativeWork/FAQ schema, 301 from `/seo-report-infographic/`, rewritten `/gsc-infographic-report/`, nav/footer/home links to the cluster.
+- **Result:** TBD — review 28 days after deploy.
+- **Learning:** TBD

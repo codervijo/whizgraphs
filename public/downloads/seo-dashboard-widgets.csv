@@ -1,0 +1,7 @@
+﻿Widget,Metrics / dimensions,Chart type,Why it's there,Data source
+Filters,Date range · device · country · page group,Controls,Lets one dashboard answer many questions without a new report.,Google Search Console · Performance
+Scorecards,Clicks · impressions · CTR · avg position,Scorecard + sparkline,The four Search Console totals with change vs the previous period.,Google Search Console · Performance
+Trend,Clicks and impressions by day or week,Time series,Shows direction and when a change started.,Google Search Console · Performance
+Top queries,Query · clicks · impressions · CTR · position,"Table, sortable",Where demand is coming from.,Google Search Console · Performance
+Top pages,Page · clicks · Δ clicks,Table with change column,Which URLs are gaining or losing.,Google Search Console · Performance
+Device split,Clicks by device,Bar or donut,Catches problems that only affect one device.,Google Search Console · Performance

@@ -124,7 +124,7 @@ function Footer({ cfg }: { cfg: InfographicConfig }) {
     <div className="mt-4 flex items-center justify-between border-t border-slate-200 pt-3 text-[11px] text-slate-400">
       <span>Made with WhizGraphs</span>
       <span className="font-medium" style={{ color: cfg.brandColor }}>
-        whizgraphs.app
+        whizgraphs.com
       </span>
     </div>
   );

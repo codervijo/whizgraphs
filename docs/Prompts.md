@@ -12,3 +12,6 @@ to surface "last AI prompt" per project. Keep entries append-only.
 ## 2026-06-10 — scaffolded via portfolio new bootstrap
 
 > Created project skeleton. Stack chosen, scaffolding written, git initialized.
+
+## 2026-10-05 — v2.A–D SEO template cluster ("SEO Sprint 3")
+> Upgrade /seo-infographics/ and /seo-infographic-examples/; create /seo-report-template/, /monthly-seo-report-template/, /seo-reporting-template/, /seo-dashboard-template/; improve or consolidate /gsc-infographic-report/ and /seo-report-infographic/. Original graphics, image SEO, schema, internal linking; no thin or near-duplicate pages. Decisions: v2 tier; keep GSC page (rewrite), 301 seo-report-infographic → seo-report-template; distinct angles for report vs reporting template; static PNG/PDF/CSV downloads.

@@ -1,0 +1,19 @@
+---
+import Layout from "../layouts/Layout.astro";
+import MonthlySeoReportTemplate, { faq, PATH, HERO, BLANK, DOWNLOADS } from "../components/pages/MonthlySeoReportTemplate.tsx";
+import { faqLd, templateLd } from "../lib/schema";
+
+const title = "Monthly SEO Report Template: MoM + YoY Layout (Free PDF)";
+const description =
+  "Free monthly SEO report template: month-over-month and year-over-year table, 13-month trend, page gains and drops. Printable PDF plus a formula-ready sheet.";
+---
+<Layout
+  title={title}
+  description={description}
+  path={PATH}
+  image={{ src: HERO.png, w: HERO.w, h: HERO.h, alt: HERO.alt }}
+  breadcrumb={[{ name: "Home", path: "/" }, { name: "SEO Report Template", path: "/seo-report-template/" }, { name: "Monthly SEO Report Template", path: PATH }]}
+  jsonLd={[templateLd({ path: PATH, name: "Monthly SEO report template", description, graphics: [HERO, BLANK], downloads: DOWNLOADS }), faqLd(faq)]}
+>
+  <MonthlySeoReportTemplate />
+</Layout>

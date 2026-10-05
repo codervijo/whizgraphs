@@ -6,8 +6,8 @@ const nav = [
   { to: "/", label: "Home" },
   { to: "/seo-infographics/", label: "SEO Infographics" },
   { to: "/seo-infographic-examples/", label: "Examples" },
+  { to: "/seo-report-template/", label: "Report Templates" },
   { to: "/gsc-infographic-report/", label: "GSC Report" },
-  { to: "/seo-report-infographic/", label: "SEO Report" },
   { to: "/pricing/", label: "Pricing" },
 ] as const;
 

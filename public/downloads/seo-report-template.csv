@@ -1,0 +1,27 @@
+﻿SEO report template — whizgraphs.com/seo-report-template/,,,,
+Section,Field,This period,Previous period,Change / notes
+Header,Client / site,,,
+Header,Reporting period,,,
+1 Headline,One-sentence takeaway,,,
+2 Key metrics,Clicks,,,"=IF(D6="""","""",C6/D6-1)"
+2 Key metrics,Impressions,,,"=IF(D7="""","""",C7/D7-1)"
+2 Key metrics,CTR,"=IF(C7="""","""",C6/C7)","=IF(D7="""","""",D6/D7)","=IF(D8="""","""",C8-D8)"
+2 Key metrics,Average position,,,"=IF(D9="""","""",D9-C9)"
+3 Trend,Month 1 clicks,,,Add one row per month (6–13 months)
+3 Trend,Month 2 clicks,,,
+3 Trend,Month 3 clicks,,,
+4 Top pages,Page 1 URL,,,
+4 Top pages,Page 2 URL,,,
+4 Top pages,Page 3 URL,,,
+4 Top pages,Page 4 URL,,,
+4 Top pages,Page 5 URL,,,
+5 Keyword wins,Query 1 (position before → after),,,
+5 Keyword wins,Query 2,,,
+5 Keyword wins,Query 3,,,
+5 Keyword wins,Query 4,,,
+6 Work completed,Item 1,,,
+6 Work completed,Item 2,,,
+6 Work completed,Item 3,,,
+7 Next period plan,Priority 1 (and the metric it should move),,,
+7 Next period plan,Priority 2,,,
+7 Next period plan,Priority 3,,,

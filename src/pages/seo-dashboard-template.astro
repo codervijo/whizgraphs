@@ -1,0 +1,19 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SeoDashboardTemplate, { faq, PATH, HERO, BLANK, DOWNLOADS } from "../components/pages/SeoDashboardTemplate.tsx";
+import { faqLd, templateLd } from "../lib/schema";
+
+const title = "SEO Dashboard Template: 6-Widget Search Console Layout";
+const description =
+  "Free SEO dashboard template for Search Console: scorecards, trend, devices, top queries and pages. Wireframe PDF, widget spec, Looker Studio steps.";
+---
+<Layout
+  title={title}
+  description={description}
+  path={PATH}
+  image={{ src: HERO.png, w: HERO.w, h: HERO.h, alt: HERO.alt }}
+  breadcrumb={[{ name: "Home", path: "/" }, { name: "SEO Report Template", path: "/seo-report-template/" }, { name: "SEO Dashboard Template", path: PATH }]}
+  jsonLd={[templateLd({ path: PATH, name: "SEO dashboard template", description, graphics: [HERO, BLANK], downloads: DOWNLOADS }), faqLd(faq)]}
+>
+  <SeoDashboardTemplate />
+</Layout>

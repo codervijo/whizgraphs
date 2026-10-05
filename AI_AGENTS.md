@@ -88,7 +88,7 @@ docker exec -w /usr/src/app <name> make test proj=whizgraphs.com
   (avoids the bun-detection trap kwizicle.com hit). Idempotent; safe to re-run.
 - **Vite version:** must be ≥ 6.0.0 — Wrangler's Vite integration rejects Vite 5.
 - **Env vars:** set `VITE_*` vars (e.g. `VITE_GA_ID`) in the Cloudflare Workers project's environment-variable settings — they're inlined at build time.
-- **Live URL:** https://whizgraphs.com/  *(update once first deploy succeeds)*
+- **Live URL:** https://whizgraphs.com/
 - **Legacy:** if a `vercel.json` or `.vercelignore` is present from a Lovable export, it's inert on Cloudflare and safe to delete.
 
 ## Content strategy

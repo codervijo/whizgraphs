@@ -117,6 +117,29 @@ client seo dashboard,221,4400,5.0%,9
         </div>
       </section>
 
+      {/* Free templates */}
+      <section className="border-t border-border">
+        <div className="container-page py-16">
+          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">Free SEO report templates</h2>
+          <p className="mt-2 max-w-2xl text-muted-foreground">
+            Printable PDFs and spreadsheets built on Search Console data — use them as they are, or let WhizGraphs draw the visuals.
+          </p>
+          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {[
+              { href: "/seo-report-template/", title: "SEO report template", body: "One page, seven sections, for clients and managers." },
+              { href: "/monthly-seo-report-template/", title: "Monthly SEO report template", body: "Month-over-month and year-over-year, with a 13-month trend." },
+              { href: "/seo-reporting-template/", title: "SEO reporting template", body: "Weekly, monthly and quarterly cadences, KPIs by audience." },
+              { href: "/seo-dashboard-template/", title: "SEO dashboard template", body: "A Search Console monitoring layout for Looker Studio." },
+            ].map((t) => (
+              <a key={t.href} href={t.href} className="rounded-xl border border-border p-5 transition-all hover:-translate-y-0.5 hover:shadow-md">
+                <div className="font-semibold">{t.title}</div>
+                <p className="mt-1 text-sm text-muted-foreground">{t.body}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Example gallery */}
       <section className="border-t border-border bg-surface">
         <div className="container-page py-16">
@@ -138,7 +161,7 @@ client seo dashboard,221,4400,5.0%,9
                   template: t.id,
                   headline:
                     t.id === "top-pages"
-                      ? "Five URLs drove 62% of clicks."
+                      ? "Five URLs earned most of the clicks."
                       : t.id === "keyword-wins"
                       ? "Big movers this month."
                       : defaultConfig.headline,

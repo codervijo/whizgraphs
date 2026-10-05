@@ -1,23 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import SeoInfographicExamples, { faq } from "../components/pages/SeoInfographicExamples.tsx";
+import SeoInfographicExamples, { faq, PATH, HERO } from "../components/pages/SeoInfographicExamples.tsx";
+import { GRAPHICS, EXAMPLES } from "../lib/graphics/catalog.mjs";
+import { faqLd, galleryLd } from "../lib/schema";
 
-const faqLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faq.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
-};
+const title = "SEO Infographic Examples: 10 Annotated Designs (Free PNG)";
+const description =
+  "Ten annotated SEO infographic examples from Search Console-style data — growth, recovery, keyword wins, CTR fixes and more. Free PNG downloads.";
 ---
 <Layout
-  title="SEO Infographic Examples — WhizGraphs"
-  description="Six annotated SEO infographic examples generated from GSC-style data — the story each tells, why it works, and the principles behind them."
-  path="/seo-infographic-examples"
-  breadcrumb={[{ name: "Home", path: "/" }, { name: "SEO Infographic Examples", path: "/seo-infographic-examples/" }]}
+  title={title}
+  description={description}
+  path={PATH}
+  image={{ src: HERO.png, w: HERO.w, h: HERO.h, alt: HERO.alt }}
+  breadcrumb={[{ name: "Home", path: "/" }, { name: "SEO Infographics", path: "/seo-infographics/" }, { name: "Examples", path: PATH }]}
+  jsonLd={[galleryLd({ path: PATH, name: title, description, graphics: EXAMPLES.map((e) => GRAPHICS[e.id]), type: "ImageGallery" }), faqLd(faq)]}
 >
   <SeoInfographicExamples />
-  <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
 </Layout>

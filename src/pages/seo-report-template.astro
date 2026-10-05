@@ -1,0 +1,19 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SeoReportTemplate, { faq, PATH, HERO, BLANK, DOWNLOADS } from "../components/pages/SeoReportTemplate.tsx";
+import { faqLd, templateLd } from "../lib/schema";
+
+const title = "Free SEO Report Template (PDF + Sheet): One-Page Client Report";
+const description =
+  "Download a free one-page SEO report template: printable PDF, Google Sheets/Excel data sheet and PNG. Seven sections on Search Console data, with an example.";
+---
+<Layout
+  title={title}
+  description={description}
+  path={PATH}
+  image={{ src: HERO.png, w: HERO.w, h: HERO.h, alt: HERO.alt }}
+  breadcrumb={[{ name: "Home", path: "/" }, { name: "SEO Report Template", path: PATH }]}
+  jsonLd={[templateLd({ path: PATH, name: "SEO report template", description, graphics: [HERO, BLANK], downloads: DOWNLOADS }), faqLd(faq)]}
+>
+  <SeoReportTemplate />
+</Layout>

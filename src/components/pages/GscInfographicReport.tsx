@@ -1,72 +1,79 @@
-import { InfographicPreview, defaultConfig } from "../InfographicPreview";
-import { ArrowRight, Check, MousePointerClick, Eye, Percent, ListOrdered } from "lucide-react";
-import { Eyebrow, Faq, RelatedPages, CtaBand, type FaqItem } from "./_shared";
+import { GRAPHICS } from "../../lib/graphics/catalog.mjs";
+import { MousePointerClick, Eye, Percent, ListOrdered, AlertTriangle } from "lucide-react";
+import { Eyebrow, Faq, RelatedPages, CtaBand, SectionHead, Graphic, Steps, type FaqItem } from "./_shared";
+
+export const PATH = "/gsc-infographic-report/";
+export const HERO = GRAPHICS["gsc-performance-report-to-infographic"];
+export const FUNNEL = GRAPHICS["search-console-metrics-funnel"];
+export const SAMPLE = GRAPHICS["seo-infographic-keyword-wins"];
 
 const METRICS = [
   {
     icon: MousePointerClick,
     name: "Clicks",
-    def: "The number of times someone clicked through to your site from Google’s results.",
-    read: "The bottom-line demand number. Rising clicks mean more people are choosing your result — the metric a client cares about most.",
-    visual: "Plotted as the headline trend in Traffic Growth and totaled in the Health Snapshot.",
+    def: "Times someone clicked through to your site from Google Search results.",
+    read: "The demand number — what most stakeholders care about. Use it as the headline metric.",
+    visual: "Trend line in Traffic Growth; bars in Top Pages.",
   },
   {
     icon: Eye,
     name: "Impressions",
-    def: "How many times a link to your site appeared in search results — whether or not it was clicked.",
-    read: "Your visibility. Impressions can climb well before clicks do, which is often the earliest sign new content is gaining ground.",
-    visual: "Shown alongside clicks in Traffic Growth so you can see reach and demand move together.",
+    def: "Times a link to your site appeared in results a user saw, clicked or not.",
+    read: "Visibility. Impressions often rise before clicks do — the earliest sign new content is surfacing.",
+    visual: "Second tile in Traffic Growth; the denominator behind every CTR.",
   },
   {
     icon: Percent,
-    name: "CTR (click-through rate)",
-    def: "Clicks divided by impressions — the share of people who saw your result and clicked it.",
-    read: "A relevance and packaging signal. A page that ranks well but has low CTR usually needs a sharper title or meta description, not a higher rank.",
-    visual: "The vertical axis in Content Performance, so low-CTR pages are easy to spot against their rank.",
+    name: "CTR",
+    def: "Clicks ÷ impressions.",
+    read: "Packaging. A page that ranks well with a low CTR usually needs a better title or description, not a higher rank.",
+    visual: "Vertical axis in Content Performance; the red column in CTR Opportunities.",
   },
   {
     icon: ListOrdered,
     name: "Average position",
-    def: "The average ranking of your URLs for the queries measured — lower is better, with 1 being the top result.",
-    read: "Where you sit on the page. Movement from position 9 to 4 is the kind of concrete win worth putting in front of a stakeholder.",
-    visual: "The before → after story in Keyword Wins and the horizontal axis in Content Performance.",
+    def: "The average of your topmost position across impressions. Lower is better.",
+    read: "Where you sit. Report movement on the queries that matter, not just the sitewide average.",
+    visual: "Before → after tracks in Keyword Wins; the horizontal axis in Content Performance.",
   },
 ];
 
-const PIPELINE = [
-  { n: 1, label: "Export or pull your GSC metrics", body: "Start from the Search Console Performance report — clicks, impressions, CTR, and position by query and by page." },
-  { n: 2, label: "Choose the template that fits the story", body: "Trend, top pages, keyword wins, content performance, or a health snapshot — one per question you’re answering." },
-  { n: 3, label: "Brand it and write the headline", body: "Set your color and logo, then say the takeaway in one plain sentence." },
-  { n: 4, label: "Share the single image", body: "Drop it into the report, the email, or the channel where your audience already is." },
+const TABS = [
+  { tab: "Dates", gives: "Clicks, impressions, CTR and position for every day in the range", feeds: "Traffic Growth, SEO Health Snapshot", href: "/seo-infographics/#traffic-growth" },
+  { tab: "Queries", gives: "Every query that showed your site, with its four metrics", feeds: "Keyword Wins, CTR Opportunities", href: "/seo-infographics/#keyword-wins" },
+  { tab: "Pages", gives: "Every URL that appeared, with its four metrics", feeds: "Top Pages, Content Performance", href: "/seo-infographics/#top-pages" },
+  { tab: "Countries", gives: "Metrics by searcher country", feeds: "Audience Mix", href: "/seo-infographic-examples/#audience-mix" },
+  { tab: "Devices", gives: "Metrics by desktop, mobile, tablet", feeds: "Audience Mix", href: "/seo-infographic-examples/#audience-mix" },
 ];
 
-const READING = [
-  { label: "Read the direction before the value", body: "Whether clicks are trending up, flat, or down matters more to your reader than the exact count. Lead with the direction." },
-  { label: "Compare like-for-like periods", body: "Month-over-month or year-over-year — pick a comparison window and keep it consistent so a change means something." },
-  { label: "Pair position with CTR", body: "A ranking gain only turns into traffic if the result also gets clicked. Look at the two together, not in isolation." },
-  { label: "Watch impressions as the leading edge", body: "Rising impressions with flat clicks often means you’re surfacing for new queries — a signal to sharpen titles next." },
+const CAVEATS = [
+  { t: "Query totals won’t match page totals", b: "Search Console omits some rare queries to protect user privacy, so the Queries tab adds up to less than the Pages tab. Report clicks from the chart totals, and use the Queries tab for movement." },
+  { t: "The interface export is capped", b: "Exports from the Performance report include up to 1,000 rows per table. For long-tail analysis beyond that, use the Search Console API or the Looker Studio connector." },
+  { t: "History is limited to 16 months", b: "Performance data only goes back 16 months. Keep your own monthly export if you want longer year-over-year comparisons later." },
+  { t: "Recent days are incomplete", b: "The newest data arrives with a short delay. Leave the last couple of days out of a report, or pull it a few days after the period ends." },
+  { t: "Average position is an average", b: "New impressions on deep, long-tail queries pull the average down even while your important rankings improve. Pair it with the query list." },
 ];
 
 export const faq: FaqItem[] = [
   {
     q: "What is a GSC infographic report?",
-    a: "It’s a Google Search Console report rendered as a single, shareable image instead of a table. The same core metrics — clicks, impressions, CTR, and average position — are laid out visually so anyone can read the story without opening Search Console.",
+    a: "A Google Search Console report rendered as a single shareable image instead of tables. It takes the Performance report’s clicks, impressions, CTR and average position — by date, query or page — and lays them out so anyone can read the result without opening Search Console.",
   },
   {
-    q: "Which Search Console metrics does it use?",
-    a: "The four from the Performance report: clicks, impressions, click-through rate, and average position. WhizGraphs maps each one to a template element so the metric that matters is the one the reader sees first.",
+    q: "How do I export data from Google Search Console?",
+    a: "Open Performance → Search results, set the date range (and a comparison if you want one), then use the Export button to download a CSV or Excel file or send it to Google Sheets. The export contains a separate sheet for each tab — Queries, Pages, Countries, Devices, Dates — for the range you selected.",
   },
   {
-    q: "Do I need to connect my Search Console account?",
-    a: "Not for the MVP. It runs on realistic mock GSC data so you can build and preview a full report today. Live Google Search Console sync is rolling out gradually — until then, no account connection is required.",
+    q: "Which Search Console tab should I use for which infographic?",
+    a: "Dates for trends and totals (Traffic Growth, SEO Health Snapshot); Queries for ranking movement and under-clicked searches (Keyword Wins, CTR Opportunities); Pages for which URLs carry the site (Top Pages, Content Performance); Countries and Devices for Audience Mix.",
   },
   {
-    q: "What’s the difference between clicks and impressions?",
-    a: "An impression is counted every time your link appears in results; a click is counted only when someone actually visits. Impressions measure visibility, clicks measure demand, and CTR is the ratio between them.",
+    q: "Why don’t my query clicks add up to my total clicks?",
+    a: "Search Console leaves out some infrequent queries for privacy reasons, so the Queries tab sums to less than the site total. Use the chart totals for headline numbers and the Queries tab for which searches moved.",
   },
   {
-    q: "Is a lower average position better?",
-    a: "Yes. Average position is a ranking, so position 3 is better than position 8. Moving that number down over time is one of the clearest ways to show SEO progress.",
+    q: "Do I need to connect my Search Console account to WhizGraphs?",
+    a: "Not today. The app runs on realistic mock Search Console data so you can build and preview any template now. Live Search Console sync is rolling out gradually; until then you can follow the export steps on this page and build the same visuals by hand.",
   },
 ];
 
@@ -74,140 +81,134 @@ export default function GscInfographicReport() {
   return (
     <>
       {/* Hero */}
-      <section className="container-page grid gap-10 py-12 md:grid-cols-2 md:items-center md:py-16">
-        <div>
-          <Eyebrow>GSC report</Eyebrow>
-          <h1 className="mt-2 text-4xl font-bold tracking-tight md:text-5xl">
-            Your Search Console data, as a report people actually read.
-          </h1>
+      <section className="container-page py-12 md:py-16">
+        <div className="max-w-3xl">
+          <Eyebrow>Google Search Console</Eyebrow>
+          <h1 className="mt-2 text-4xl font-bold tracking-tight md:text-5xl">GSC infographic report: from Search Console export to one clear image</h1>
           <p className="mt-4 text-lg text-muted-foreground">
-            WhizGraphs reads GSC-style metrics — clicks, impressions, CTR, position — and lays them out as a single
-            polished infographic. No design pass, no slide deck, no exporting a spreadsheet nobody opens.
+            Google Search Console has everything you need for an SEO report — buried in a chart and five tabs of tables.
+            This guide shows which part of the Performance report feeds which infographic, how to export it, and the
+            data quirks to know before you put a number in front of anyone.
           </p>
-          <ul className="mt-6 space-y-2 text-sm">
-            {[
-              "Clicks & impressions trend with month-over-month deltas",
-              "Top URLs ranked by traffic contribution",
-              "Average CTR and position with plain-language context",
-              "Brand color, logo, and headline — fully editable",
-            ].map((b) => (
-              <li key={b} className="flex items-start gap-2">
-                <Check className="mt-0.5 h-4 w-4 text-primary" />
-                {b}
-              </li>
-            ))}
-          </ul>
-          <a
-            href="/dashboard/"
-            className="mt-6 inline-flex h-11 items-center gap-2 rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground hover:bg-primary/90"
-          >
-            Build a GSC report <ArrowRight className="h-4 w-4" />
-          </a>
         </div>
-        <div>
-          <InfographicPreview
-            config={{ ...defaultConfig, template: "traffic-growth", headline: "Search traffic is up 3.4× this year." }}
-          />
-        </div>
+        <Graphic g={HERO} eager className="mt-10" />
       </section>
 
-      {/* Metric glossary */}
+      {/* Tab map */}
       <section className="border-y border-border bg-surface">
         <div className="container-page py-16">
-          <div className="max-w-2xl">
-            <Eyebrow>The four metrics, in plain language</Eyebrow>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">
-              What Search Console gives you — and how to read it.
-            </h2>
-            <p className="mt-3 text-muted-foreground">
-              Every WhizGraphs template is built from these four numbers. Understand what each one means and you can
-              read any SEO report at a glance.
-            </p>
-          </div>
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
-            {METRICS.map((m) => (
-              <div key={m.name} className="rounded-xl border border-border bg-background p-5">
-                <div className="flex items-center gap-3">
-                  <span className="grid h-9 w-9 place-items-center rounded-md bg-accent text-accent-foreground">
-                    <m.icon className="h-4 w-4" />
-                  </span>
-                  <h3 className="text-lg font-semibold">{m.name}</h3>
-                </div>
-                <p className="mt-3 text-sm font-medium">{m.def}</p>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{m.read}</p>
-                <p className="mt-3 border-t border-border pt-3 text-xs text-muted-foreground">
-                  <span className="font-semibold text-foreground">In the report: </span>
-                  {m.visual}
-                </p>
-              </div>
-            ))}
+          <SectionHead eyebrow="The map" title="Which Performance report tab feeds which infographic">
+            <p>Every WhizGraphs template reads from one tab. Export the tab, get the visual.</p>
+          </SectionHead>
+          <div className="mt-8 overflow-x-auto rounded-xl border border-border bg-background">
+            <table className="w-full min-w-[640px] text-left text-sm">
+              <thead className="border-b border-border bg-muted/50 text-xs uppercase tracking-wide text-muted-foreground">
+                <tr>
+                  <th className="px-4 py-3">Tab</th>
+                  <th className="px-4 py-3">What it gives you</th>
+                  <th className="px-4 py-3">Infographic it feeds</th>
+                </tr>
+              </thead>
+              <tbody>
+                {TABS.map((t) => (
+                  <tr key={t.tab} className="border-b border-border last:border-0">
+                    <td className="px-4 py-3 font-semibold">{t.tab}</td>
+                    <td className="px-4 py-3 text-muted-foreground">{t.gives}</td>
+                    <td className="px-4 py-3">
+                      <a href={t.href} className="text-primary hover:underline">{t.feeds}</a>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
 
-      {/* Pipeline */}
+      {/* Metrics */}
       <section className="container-page py-16">
-        <div className="max-w-2xl">
-          <Eyebrow>From export to infographic</Eyebrow>
-          <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">Four steps from raw GSC to a shareable report.</h2>
-        </div>
-        <div className="mt-8 grid gap-4 md:grid-cols-4">
-          {PIPELINE.map((p) => (
-            <div key={p.n} className="rounded-xl border border-border p-5">
-              <span className="grid h-8 w-8 place-items-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
-                {p.n}
-              </span>
-              <h3 className="mt-3 font-semibold">{p.label}</h3>
-              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{p.body}</p>
+        <SectionHead eyebrow="The four metrics" title="What Search Console actually counts">
+          <p>Every GSC infographic is built from four numbers. Get the definitions right and the rest of the report follows.</p>
+        </SectionHead>
+        <Graphic g={FUNNEL} className="mt-8" />
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
+          {METRICS.map((m) => (
+            <div key={m.name} className="rounded-xl border border-border p-5">
+              <div className="flex items-center gap-3">
+                <span className="grid h-9 w-9 place-items-center rounded-md bg-accent text-accent-foreground">
+                  <m.icon className="h-4 w-4" />
+                </span>
+                <h3 className="text-lg font-semibold">{m.name}</h3>
+              </div>
+              <p className="mt-3 text-sm font-medium">{m.def}</p>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{m.read}</p>
+              <p className="mt-3 border-t border-border pt-3 text-xs text-muted-foreground">
+                <span className="font-semibold text-foreground">In the infographic: </span>
+                {m.visual}
+              </p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Reading the data */}
+      {/* Export steps */}
       <section className="border-y border-border bg-surface">
-        <div className="container-page py-16">
-          <div className="max-w-2xl">
-            <Eyebrow>Reading the trends</Eyebrow>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">How to interpret the numbers you’re showing.</h2>
-            <p className="mt-3 text-muted-foreground">
-              A report is only useful if you can explain it. These are the habits that keep an SEO read honest.
-            </p>
+        <div className="container-page grid gap-10 py-16 lg:grid-cols-[1.3fr_1fr]">
+          <div>
+            <SectionHead eyebrow="Step by step" title="How to turn a Search Console export into an infographic report" />
+            <Steps
+              items={[
+                { title: "Open Performance → Search results", body: "Check that Web is the search type and the right property is selected." },
+                { title: "Set the date range and comparison", body: "Last month vs the month before, or vs the same month last year. The comparison is where the story is." },
+                { title: "Export", body: "Use Export → Google Sheets, Excel or CSV. The file contains a separate sheet for each tab — Dates, Queries, Pages, Countries, Devices — for the range you set." },
+                { title: "Open the sheet for your question", body: "Use the map above: Dates for trends, Queries for movement, Pages for concentration." },
+                { title: "Compute changes and pick the finding", body: "Percent change for clicks and impressions, percentage points for CTR, places for position. Then write one sentence." },
+                {
+                  title: "Lay it out",
+                  body: (
+                    <>
+                      Use a{" "}
+                      <a href="/seo-infographics/" className="text-primary hover:underline">WhizGraphs template</a>, or for a fuller document the{" "}
+                      <a href="/seo-report-template/" className="text-primary hover:underline">one-page SEO report template</a>.
+                    </>
+                  ),
+                },
+              ]}
+            />
           </div>
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
-            {READING.map((r) => (
-              <div key={r.label} className="rounded-xl border border-border bg-background p-5">
-                <div className="font-semibold">{r.label}</div>
-                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{r.body}</p>
-              </div>
-            ))}
+          <div className="lg:pt-24">
+            <Graphic g={SAMPLE} caption="A Queries-tab export, as a Keyword Wins infographic (sample data)." />
           </div>
-          <p className="mt-6 text-sm text-muted-foreground">
-            Note: the previews on this site are generated from realistic mock GSC data. Live Google Search Console sync
-            is rolling out gradually — the layout and metrics you see are exactly what your own numbers will render into.
-          </p>
         </div>
+      </section>
+
+      {/* Caveats */}
+      <section className="container-page py-16">
+        <SectionHead eyebrow="Before you publish a number" title="Five Search Console data quirks to know">
+          <p>None of these are bugs — but each one has embarrassed someone in a client meeting.</p>
+        </SectionHead>
+        <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {CAVEATS.map((c) => (
+            <div key={c.t} className="rounded-xl border border-border p-5">
+              <AlertTriangle className="h-5 w-5 text-warning" />
+              <div className="mt-3 font-semibold">{c.t}</div>
+              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{c.b}</p>
+            </div>
+          ))}
+        </div>
+        <p className="mt-6 text-sm text-muted-foreground">
+          Note: graphics on this site are generated from sample Search Console-style data for fictional sites. Live
+          Search Console sync in the WhizGraphs app is rolling out gradually.
+        </p>
       </section>
 
       <Faq items={faq} />
 
       <RelatedPages
         links={[
-          {
-            href: "/seo-report-infographic/",
-            title: "SEO report infographic",
-            blurb: "Package these metrics into a monthly report clients open.",
-          },
-          {
-            href: "/seo-infographics/",
-            title: "All five templates",
-            blurb: "What each template reads and the question it answers.",
-          },
-          {
-            href: "/seo-infographic-examples/",
-            title: "Examples",
-            blurb: "Six finished infographics built from GSC-style data.",
-          },
+          { href: "/seo-infographics/", title: "SEO infographic templates", blurb: "The five templates each Search Console tab feeds." },
+          { href: "/seo-dashboard-template/", title: "SEO dashboard template", blurb: "Monitor the same metrics continuously in Looker Studio." },
+          { href: "/monthly-seo-report-template/", title: "Monthly SEO report template", blurb: "The month-over-month and year-over-year version." },
         ]}
       />
 

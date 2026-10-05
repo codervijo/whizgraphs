@@ -1,23 +1,19 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import GscInfographicReport, { faq } from "../components/pages/GscInfographicReport.tsx";
+import GscInfographicReport, { faq, PATH, HERO, FUNNEL, SAMPLE } from "../components/pages/GscInfographicReport.tsx";
+import { faqLd, galleryLd } from "../lib/schema";
 
-const faqLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faq.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
-};
+const title = "GSC Infographic Report: Search Console Data as One Image";
+const description =
+  "Turn a Google Search Console export into an infographic report: which tab feeds which visual, what each metric counts, and five data quirks to know.";
 ---
 <Layout
-  title="GSC Infographic Report — WhizGraphs"
-  description="Turn Google Search Console data into a one-page infographic. What clicks, impressions, CTR, and average position mean — and how to read the trends."
-  path="/gsc-infographic-report"
-  breadcrumb={[{ name: "Home", path: "/" }, { name: "GSC Infographic Report", path: "/gsc-infographic-report/" }]}
+  title={title}
+  description={description}
+  path={PATH}
+  image={{ src: HERO.png, w: HERO.w, h: HERO.h, alt: HERO.alt }}
+  breadcrumb={[{ name: "Home", path: "/" }, { name: "SEO Infographics", path: "/seo-infographics/" }, { name: "GSC Infographic Report", path: PATH }]}
+  jsonLd={[galleryLd({ path: PATH, name: title, description, graphics: [HERO, FUNNEL, SAMPLE], type: "WebPage" }), faqLd(faq)]}
 >
   <GscInfographicReport />
-  <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
 </Layout>

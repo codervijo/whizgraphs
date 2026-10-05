@@ -10,7 +10,12 @@ const {
   description = "WhizGraphs converts Search Console data into clean visual SEO reports.",
   path = "/",
   breadcrumb = [],
+  // Optional: { src, w, h, alt } — absolute-path PNG used for og:image / twitter:image.
+  image = null,
+  // Optional: array of JSON-LD objects emitted as separate <script> tags.
+  jsonLd = [],
 } = Astro.props;
+const imageUrl = image ? new URL(image.src, site).href : null;
 // Standardize on the with-slash form: it is what the static build serves (200)
 // and what the sitemap emits. A no-slash canonical would point at a 308 redirect.
 const normalizedPath = path.endsWith("/") ? path : `${path}/`;
@@ -47,15 +52,21 @@ const breadcrumbLd =
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content="WhizGraphs" />
+    {imageUrl && <meta property="og:image" content={imageUrl} />}
+    {imageUrl && <meta property="og:image:width" content={String(image.w)} />}
+    {imageUrl && <meta property="og:image:height" content={String(image.h)} />}
+    {imageUrl && <meta property="og:image:alt" content={image.alt} />}
 
     <!-- Twitter card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    {imageUrl && <meta name="twitter:image" content={imageUrl} />}
 
     {breadcrumbLd && (
       <script type="application/ld+json" set:html={JSON.stringify(breadcrumbLd)} />
     )}
+    {jsonLd.map((ld) => <script type="application/ld+json" set:html={JSON.stringify(ld)} />)}
 
     <!-- Prevent theme flash: apply persisted/system theme before paint -->
     <script is:inline>
