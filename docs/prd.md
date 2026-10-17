@@ -4,7 +4,7 @@ prd_version: 1
 project_version: v2.D
 status: active
 owner: Vijo
-last_updated: 2026-10-05
+last_updated: 2026-10-16
 ---
 
 # whizgraphs.com — PRD
@@ -56,9 +56,9 @@ Two-level versioning convention (canonical: `sites/portfolio/AI_AGENTS.md`):
 | **v1.C** | crawl/indexing fixes | JSON-LD canonical alignment, sitemap index, `trailingSlash: 'always'`, real 404 (6d4a08c, d42915e, 0977b9e) | ✅ |
 | **v1.D** | content-page expansion | deeper SEO landing pages, shared page components, sitemap lastmod (07ba863) | ✅ |
 | **v2.A** | planning / decisions lock | keyword map (Ahrefs SV/KD + GSC impressions); decisions: keep `/gsc-infographic-report/` (rewrite), 301 `/seo-report-infographic/` → `/seo-report-template/`; report-template vs reporting-template get distinct angles; downloads = static files (PNG, PDF, CSV) | ✅ |
-| **v2.B** | infographic pages + image pipeline | build-time SVG/PNG/PDF/CSV asset generator; upgrade `/seo-infographics/` (seo infographic 1.6K/KD5, seo infographics 1.5K/KD0, infographics for seo 400/KD4) and `/seo-infographic-examples/` (visual gallery); image SEO (alt, dimensions, ImageObject schema, og:image) | built (uncommitted) |
-| **v2.C** | report template hub | new `/seo-report-template/` (seo report template 2.8K/KD0) with downloadable template; 301 `/seo-report-infographic/`; rewrite `/gsc-infographic-report/` around the GSC-export → report workflow | built (uncommitted) |
-| **v2.D** | template variants | new `/monthly-seo-report-template/` (600/KD5), `/seo-reporting-template/` (1K/KD12, recurring reporting system), `/seo-dashboard-template/` (100/KD4, live-tracking layout); cluster internal linking + nav/footer | built (uncommitted) |
+| **v2.B** | infographic pages + image pipeline | build-time SVG/PNG/PDF/CSV asset generator; upgrade `/seo-infographics/` (seo infographic 1.6K/KD5, seo infographics 1.5K/KD0, infographics for seo 400/KD4) and `/seo-infographic-examples/` (visual gallery); image SEO (alt, dimensions, ImageObject schema, og:image) | ✅ (8251f13) |
+| **v2.C** | report template hub | new `/seo-report-template/` (seo report template 2.8K/KD0) with downloadable template; 301 `/seo-report-infographic/`; rewrite `/gsc-infographic-report/` around the GSC-export → report workflow | ✅ (8251f13) |
+| **v2.D** | template variants | new `/monthly-seo-report-template/` (600/KD5), `/seo-reporting-template/` (1K/KD12, recurring reporting system), `/seo-dashboard-template/` (100/KD4, live-tracking layout); cluster internal linking + nav/footer | ✅ (8251f13) |
 
 ## 6. Open questions
 
