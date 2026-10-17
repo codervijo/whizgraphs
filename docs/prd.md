@@ -59,6 +59,7 @@ Two-level versioning convention (canonical: `sites/portfolio/AI_AGENTS.md`):
 | **v2.B** | infographic pages + image pipeline | build-time SVG/PNG/PDF/CSV asset generator; upgrade `/seo-infographics/` (seo infographic 1.6K/KD5, seo infographics 1.5K/KD0, infographics for seo 400/KD4) and `/seo-infographic-examples/` (visual gallery); image SEO (alt, dimensions, ImageObject schema, og:image) | ✅ (8251f13) |
 | **v2.C** | report template hub | new `/seo-report-template/` (seo report template 2.8K/KD0) with downloadable template; 301 `/seo-report-infographic/`; rewrite `/gsc-infographic-report/` around the GSC-export → report workflow | ✅ (8251f13) |
 | **v2.D** | template variants | new `/monthly-seo-report-template/` (600/KD5), `/seo-reporting-template/` (1K/KD12, recurring reporting system), `/seo-dashboard-template/` (100/KD4, live-tracking layout); cluster internal linking + nav/footer | ✅ (8251f13) |
+| **v2.E** | query-surface expansion | new `/sample-seo-report/` — filled-in example report for "sample seo report" / "example seo report" / "monthly seo report" / "seo report pdf" (GSC 2026-09-16→10-13: first impressions, pos 73–100); "infographics for links" angle for "infographics seo" (37→116 imp) / "seo for infographics" (23→66) — section on `/seo-infographics/` or own page, decide at build; Google Images impressions baseline for `/graphics/*` | ⏳ |
 
 ## 6. Open questions
 
