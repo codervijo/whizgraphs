@@ -1,4 +1,5 @@
 ---
+import Analytics from "../components/Analytics.astro";
 // src/layouts/Layout.astro — shared chrome + head for ported WhizGraphs pages.
 import "../styles/global.css";
 import Header from "../components/Header.tsx";
@@ -81,6 +82,7 @@ const breadcrumbLd =
         } catch (e) {}
       })();
     </script>
+    <Analytics />
   </head>
   <body>
     <div class="flex min-h-screen flex-col bg-background">

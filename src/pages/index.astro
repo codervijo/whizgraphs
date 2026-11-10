@@ -1,4 +1,5 @@
 ---
+import Analytics from "../components/Analytics.astro";
 // src/pages/index.astro — WhizGraphs home. Standalone document (inlines the
 // SEO baseline tags so the technical-SEO regression test passes) reusing the
 // same chrome + global styles as Layout.astro.
@@ -89,6 +90,7 @@ const description =
   ]
 }
     </script>
+    <Analytics />
   </head>
   <body>
     <div class="flex min-h-screen flex-col bg-background">

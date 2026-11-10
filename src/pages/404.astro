@@ -1,4 +1,5 @@
 ---
+import Analytics from "../components/Analytics.astro";
 // src/pages/404.astro — real 404 page. With wrangler.jsonc's
 // not_found_handling: "404-page", Cloudflare serves this at a 404 status for
 // any unknown path (replacing the old SPA fallback that returned 200 → soft-404).
@@ -28,6 +29,7 @@ import Footer from "../components/Footer.tsx";
         } catch (e) {}
       })();
     </script>
+    <Analytics />
   </head>
   <body>
     <div class="flex min-h-screen flex-col bg-background">
